@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>TUGAS WEB MIRZA</title>
+  <link rel="stylesheet" href="css mirza TUGAS.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+  <div class="background2">
+  <div class="header-wrapper">
+    <img id="zoomable-header" src="img/header tav 2.png" alt="Header TAV Mekatronika">
+  </div>
+  <div class="navbar">
+    <a href="HOME.html" class="nav-item">
+      <span class="nav-icon"><i class="fas fa-home"></i></span>
+      <div class="nav-item-text">Home</div>
+    </a>
+    <a href="TUGAS WEBSITE CSS JS.html" class="nav-item">
+      <span class="nav-icon"><i class="fas fa-compass"></i></span>
+      <div class="nav-item-text">Beranda</div>
+    </a>
+    <a href="profil jurusan.html" class="nav-item">
+      <span class="nav-icon"><i class="fas fa-user-graduate"></i></span>
+      <div class="nav-item-text">Profil Jurusan</div>
+    </a>
+    <a href="prestasi1.html" class="nav-item">
+      <span class="nav-icon"><i class="fas fa-trophy"></i></span>
+      <div class="nav-item-text">Prestasi</div>
+    </a>
+    <a href="album mirza.html" class="nav-item">
+      <span class="nav-icon"><i class="fas fa-camera-retro"></i></span>
+      <div class="nav-item-text">Album</div>
+    </a>
+    <a href="buku tamu tugas bu.html" class="nav-item">
+      <span class="nav-icon"><i class="fas fa-book-open"></i></span>
+      <div class="nav-item-text">Buku Tamu</div>
+    </a>
+  </div>
+  
+  <div class="container">
+    <h1 class="title">Buku Tamu</h1>
+   <h3>Tinggalkan Pesanmu Disini!</h3>
+    
+    <form id="guestBookForm" action="https://formspree.io/f/xyzwkgyk" method="POST" class="guest-book-form">
+        <input type="text" name="name" placeholder="Nama Anda" required />
+        <textarea name="message" placeholder="Pesan Anda" rows="4" required></textarea>
+        <button type="submit" id="submitBtn">Kirim Pesan</button>
+      </form>
+      
+      <div id="successMessage" style="display:none; margin-top: 10px; color: green;">
+        ✅ Pesan kamu sudah terkirim!
+      </div>
+      <script>
+        const form = document.getElementById('guestBookForm');
+        const successMessage = document.getElementById('successMessage');
+      
+        form.addEventListener('submit', function(e) {
+          setTimeout(() => {
+            successMessage.style.display = 'block';
+            form.reset(); // bersihkan form
+          }, 1000); // kasih delay 1 detik
+        });
+        form.addEventListener('submit', async function(event) {
+    event.preventDefault(); // mencegah reload halaman
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Mengirim...";
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        alert('Pesan berhasil dikirim! 🎉');
+        form.reset(); // kosongkan form
+      } else {
+        alert('Gagal mengirim pesan. Coba lagi.');
+      }
+    } catch (error) {
+      alert('Terjadi kesalahan. Periksa koneksi Anda.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Kirim Pesan";
+    }
+  });
+      </script>
+                  
+    
+    <div id="messagesContainer" class="messages-container">
+      <!-- Pesan tamu akan ditampilkan di sini -->
+    </div>
+</div>
+  </div>
+<div class="footer">
+  <div class="footer-col footer-logo">
+    <img src="img/smk_2_yk-removebg-preview (1).png"Logo SMK">
+    <h3>SMK Negeri 2<br>Yogyakarta</h3>
+    <p>SMK Negeri 2 Yogyakarta adalah sekolah kejuruan terdepan yang mengedepankan teknologi dan inovasi.<br>Kami mencetak lulusan terbaik di bidang Teknik Audio Video (TAV) dan Mekatronika (MEKA).</p>
+  </div>
+
+  <div class="footer-col">
+    <h4>Tentang Jurusan</h4>
+    <div class="footer-box">
+      <strong>TAV:</strong> <p>Belajar produksi, instalasi, dan pengolahan sistem audio video profesional.</p>
+    </div>
+    <div class="footer-box">
+      <strong>Mekatronika:</strong> <p>Menggabungkan teknik mesin, elektronika, kontrol, dan pemrograman untuk industri 4.0.</p>
+    </div>
+  </div>
+
+  <div class="footer-col">
+    <h4>Kontak Kami</h4>
+    <div class="footer-box"><h4>📍 Jl. A.M. Sangaji No.47, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233/h4></div>
+    <div class="footer-box"><h4>📞 (0274) 512481</h4></div>
+    <div class="footer-box"><h4>✉️ info@smkn2yk.sch.id</h4></div>
+  </div>
+
+  <div class="footer-col">
+    <h4>Ikuti Kami</h4>
+    <div class="social-icons">
+      <a href="#">📘</a>
+      <a href="#">📸</a>
+      <a href="#">▶️</a>
+      <a href="#">💼</a>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom">
+  © 2025 SMK Negeri 2 Yogyakarta. Dibuat oleh <strong>Mirza Razaq</strong>. All rights reserved.<br>
+  <a href="#" style="color:#80deea">Privacy Policy</a> | <a href="#" style="color:#80deea">Terms of Service</a>
+</div>
+</footer>
+<script src="javatugas.js"></script>
+</body>
+</html>
